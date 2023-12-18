@@ -37,13 +37,20 @@ export class Home implements OnInit {
       },
     }).subscribe(data => {
       this.cards = data
-      console.log(data)
     });
   }
 
   SelectCard(card: CardTypes | any) {
     this.SelectedCard = card
-    console.log(this.SelectedCard)
+
+    function smoothscroll() {
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(smoothscroll);
+        window.scrollTo(0, currentScroll - (currentScroll / 8));
+      }
+    }
+    smoothscroll()
   }
 }
 
