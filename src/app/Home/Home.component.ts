@@ -1,14 +1,14 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
 import { CardTypes } from '../utils/types';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CardPreview } from '../Components/CardPreview/CardPreview.component';
+import { LoadingAnimation } from '../Components/LoadingAnimation/LoadingAnimation.component';
 
 @Component({
   selector: 'Home',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HttpClientModule, CardPreview],
+  imports: [CommonModule, HttpClientModule, CardPreview, LoadingAnimation],
   templateUrl: './Home.component.html',
 })
 
@@ -16,8 +16,9 @@ import { CardPreview } from '../Components/CardPreview/CardPreview.component';
 export class Home implements OnInit {
 
   HttpClient = inject(HttpClient)
-  SelectedCard: any = { id: '0', title: "Fullmetal Alchemist: The Sacred Star of Milos", image: "https://cdn.myanimelist.net/images/anime/2/29550.webp", synopsis: "Chasing a runaway alchemist with strange powers, brothers Edward and Alphonse Elric stumble into the squalidvalley of the Milos. The Milosians are an oppressed group that seek to reclaim their holy land from Creta: amilitaristic country that forcefully annexed their nation. In the eye of the political storm is a girl named Julia Crichton, who emphatically wishes for the Milos to regain their strength and return to being a nation of peace." };
+  SelectedCard: CardTypes = { id: '0', title: "Fullmetal Alchemist: The Sacred Star of Milos", image: "https://cdn.myanimelist.net/images/anime/2/29550.webp", synopsis: "Chasing a runaway alchemist with strange powers, brothers Edward and Alphonse Elric stumble into the squalidvalley of the Milos. The Milosians are an oppressed group that seek to reclaim their holy land from Creta: amilitaristic country that forcefully annexed their nation. In the eye of the political storm is a girl named Julia Crichton, who emphatically wishes for the Milos to regain their strength and return to being a nation of peace." };
   cards: any
+  loading: boolean = true
 
   ngOnInit(): void {
     this.fetchData();
@@ -30,13 +31,14 @@ export class Home implements OnInit {
         'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
       }, params: {
         page: '1',
-        size: '10',
+        size: '20',
         genres: 'Fantasy,Drama',
         sortBy: 'ranking',
         sortOrder: 'asc'
       },
     }).subscribe(data => {
       this.cards = data
+      this.loading = false
     });
   }
 
