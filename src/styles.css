@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;900&display=swap");
 
 
 * {
@@ -9,6 +10,19 @@
     padding: 0;
 }
 
+body {
+    font-family: "Poppins", sans-serif;
+
+}
+
 .bg {
     background: #3a3a3a;
+}
+
+.semi-red {
+    color: #de0606;
+}
+
+.red {
+    background: #de0606;
 }

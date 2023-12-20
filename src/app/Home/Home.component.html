@@ -1,19 +1,23 @@
-<section class="flex flex-col justify-center items-center">
+<section class="flex flex-col justify-center items-center lg:px-5">
 
   <CardPreview [CardData]="SelectedCard"></CardPreview>
 
-  <section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
-    <div class="flex justify-center items-center" *ngFor="let card of cards.data">
-      <button (click)="SelectCard(card)">
-        <img src={{card.image}} alt="" class="rounded-md">
-      </button>
-    </div>
+  <section class="flex flex-col justify-center items-start w-full ">
+    <h2 class="text-3xl font-extrabold text-white my-10">Popular Anime</h2>
+
+    <section class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5">
+      <div class="flex justify-center items-center" *ngFor="let card of cards.data">
+        <button (click)="SelectCard(card)">
+          <img src={{card.image}} alt="" class="rounded-md">
+        </button>
+      </div>
+    </section>
   </section>
+
 
 
   <ng-template [ngIf]="loading">
     <LoadingAnimation></LoadingAnimation>
-
   </ng-template>
 
 </section>

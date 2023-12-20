@@ -1,8 +1,17 @@
-<section class="flex flex-col justify-center items-center my-12">
-  <img src={{CardData.image}} alt="anime card" class="w-3/5 rounded-md">
+<section class="flex flex-col justify-center items-center my-12 lg:flex-row w-screen lg:items-start lg:my-24">
+  <img src={{CardData.image}} alt="anime card" class="w-3/5 rounded-md lg:w-1/3 lg:mx-16">
 
-  <section class="text-center flex flex-col justify-center items-center my-8">
-    <h2 class="text-xl text-white font-extrabold">{{CardData.title}}</h2>
-    <p class="text-base text-white ">{{CardData.synopsis}}</p>
+  <section
+    class="text-center flex flex-col justify-center items-center my-8 p-4 lg:w-5/6 lg:items-start lg:text-start lg:my-0">
+    <p class="font-extrabold text-base semi-red lg:text-3xl">恐ろしいア</p>
+    <h2 class="text-xl text-white font-extrabold my-3 lg:text-3xl lg:my-5">{{CardData.title}}</h2>
+    <p class="text-base text-white lg:text-xl overflow-hidden whitespace-nowrap w-[200px] text-ellipsis lg:w-[400px]">
+      {{CardData.synopsis}}</p>
+
+    <button (click)=" redirectTo(CardData.link)" class="text-white py-2 px-4 my-4 red rounded-md font-medium"
+      style="text-decoration: none;" target="_blank">See
+      More</button>
+
+    <CardDetails [CardData]='CardData'></CardDetails>
   </section>
 </section>

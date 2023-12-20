@@ -3,4 +3,7 @@ export interface CardTypes {
     image: string;
     title: string;
     synopsis: string;
+    link: string
+    status: string
+    episodes: number
 }
