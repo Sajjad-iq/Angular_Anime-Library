@@ -1,21 +1,23 @@
 <section class="flex flex-col justify-center items-center my-2 lg:flex-row">
 
   <section class='lg:mr-10 mt-4'>
-    <h3 class='text-2xl text-white font-semibold my-1  lg:text-xl lg:my-2'>Genres</h3>
-    <section class="flex justify-center items-center flex-wrap">
-      <div class="border-x-2 border-gray-300 px-4" *ngFor="let genre of CardData.genres">
+    <h3 class='text-2xl font-semibold my-1  lg:text-xl lg:my-2'>Genres</h3>
+    <section class="flex justify-center items-center flex-wrap lg:justify-start">
+      @for (genre of CardData.genres; track genre) {
+      <div class="border-x-2 border-gray-50 px-4 mt-1">
         <p class="">{{genre}}</p>
       </div>
+      }
     </section>
   </section>
 
   <section class='lg:mr-10 mt-4'>
-    <h3 class='text-2xl text-white font-semibold my-1 lg:text-xl lg:my-2'>Status</h3>
+    <h3 class='text-2xl font-semibold my-1 lg:text-xl lg:my-2'>Status</h3>
     <p class='text-base'>{{CardData.status}}</p>
   </section>
 
   <section class='lg:mr-10 mt-4'>
-    <h3 class='text-2xl text-white font-semibold my-1 lg:text-xl lg:my-2'>Episodes</h3>
+    <h3 class='text-2xl font-semibold my-1 lg:text-xl lg:my-2'>Episodes</h3>
     <p class='text-base'>{{CardData.episodes}}</p>
   </section>
 </section>

@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'CardDetails',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './CardDetails.component.html',
 })
 

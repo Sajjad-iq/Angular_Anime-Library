@@ -6,4 +6,5 @@ export interface CardTypes {
     link: string
     status: string
     episodes: number
+    genres: Array<any>
 }
