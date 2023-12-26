@@ -5,7 +5,7 @@ import { CardPreview } from '../../Components/CardPreview/CardPreview.component'
 import { LoadingAnimation } from '../../Components/LoadingAnimation/LoadingAnimation.component';
 import { ShareData } from '../../services/ShareData';
 import { RouterLink } from '@angular/router';
-import { WelcomeScreen } from '../WelcomeScreen/WelcomeScreen.component';
+import { WelcomeScreen } from '../../Components/WelcomeScreen/WelcomeScreen.component';
 
 @Component({
   selector: 'Home',
@@ -23,38 +23,34 @@ export class Home implements OnInit, OnChanges {
   loading: boolean = false
   firstLoad: boolean = true
 
-  async ngOnInit(): Promise<void> {
-    await this.fetchData();
+  ngOnInit(): void {
+    this.fetchData();
   }
   ngOnChanges(changes: SimpleChanges): void {
     this.fetchData();
   }
 
-  async fetchData() {
-    try {
-      this.loading = true
-      this.HttpClient.get<any>('https://anime-db.p.rapidapi.com/anime', {
-        headers: {
-          'X-RapidAPI-Key': '2004fcbf52msh46506c122990b42p16dccbjsn08c1c113c7db',
-          'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
-        }, params: {
-          page: '1',
-          size: '20',
-          genres: this.shareData.genres,
-          sortBy: 'ranking',
-          sortOrder: 'asc'
-        },
-      }).subscribe(data => {
-        this.cards = data
-        this.loading = false
-      });
-    }
-    catch {
-      window.alert('Something went wrong')
-    } finally {
+  fetchData() {
+    this.loading = true
+    this.HttpClient.get<any>('https://anime-db.p.rapidapi.com/anime', {
+      headers: {
+        'X-RapidAPI-Key': '2004fcbf52msh46506c122990b42p16dccbjsn08c1c113c7db',
+        'X-RapidAPI-Host': 'anime-db.p.rapidapi.com'
+      }, params: {
+        page: '1',
+        size: '20',
+        genres: this.shareData.genres,
+        sortBy: 'ranking',
+        sortOrder: 'asc'
+      },
+    }).subscribe(data => {
+      this.cards = data
+      this.loading = false
       this.firstLoad = false
-    }
+
+    });
   }
+
 
   SelectCard(card: CardTypes | any) {
     this.shareData.ShareSelectedCard = card

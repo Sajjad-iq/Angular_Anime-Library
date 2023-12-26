@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoadingAnimation } from '../../Components/LoadingAnimation/LoadingAnimation.component';
+import { LoadingAnimation } from '../LoadingAnimation/LoadingAnimation.component';
 
 
 @Component({
