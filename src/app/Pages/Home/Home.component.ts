@@ -21,7 +21,6 @@ export class Home implements OnInit, OnChanges {
   shareData = inject(ShareData)
   cards: any
   loading: boolean = false
-  firstLoad: boolean = true
 
   ngOnInit(): void {
     this.fetchData();
@@ -46,7 +45,7 @@ export class Home implements OnInit, OnChanges {
     }).subscribe(data => {
       this.cards = data
       this.loading = false
-      this.firstLoad = false
+      this.shareData.firstLoad = false
 
     });
   }
